@@ -2,8 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const mustacheExpress = require('mustache-express');
 const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
-const bodyParser = require('body-parser');
-const expressValidator = require('express-validator');
+// const bodyParser = require('body-parser');
+// const expressValidator = require('express-validator');
 
 const app = express();
 
@@ -11,7 +11,8 @@ app.engine('mst', mustacheExpress());
 app.set('views', './views');
 app.set('view engine', 'mst');
 
-
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended:false}));
 
 // Step 1: Below, we took the 'words' variable (array) which constitutes the dictionary
 // ranomWord is a variable that is comprised of a random selection of
