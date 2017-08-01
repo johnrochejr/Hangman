@@ -1,8 +1,17 @@
 const express = require('express');
 const fs = require('fs');
+const mustacheExpress = require('mustache-express');
 const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 
 const app = express();
+
+app.engine('mst', mustacheExpress());
+app.set('views', './views');
+app.set('view engine', 'mst');
+
+
 
 // Step 1: Below, we took the 'words' variable (array) which constitutes the dictionary
 // ranomWord is a variable that is comprised of a random selection of
@@ -23,13 +32,22 @@ for (let i = 0; i < wordForGame.length; i++) {
   underScores.push('_');
 }
 
-console.log(underScores);
-console.log(wordForGame);
+// test forLoop
+// console.log(underScores);
+// console.log(wordForGame);
 
+let gameData =
+
+{
+  wordforGame: wordForGame,
+  underScores: underScores
+}
 
 app.get('/', (req, res) => {
   // console.log(words);
-  res.send('Hi home whats up??');
+  // testing underScores works
+  // res.send(underScores);
+  res.render('home', { underScores });
 });
 
 app.listen(3000, () => {

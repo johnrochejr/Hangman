@@ -2,9 +2,9 @@
   "private": true,
   "dependencies": {
     "express": "^4.15.3",
-    "express-mustache": "^1.0.3",
     "express-sessions": "^1.0.6",
     "express-validator": "^3.2.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "mustache-express": "^1.2.5"
   }
 }
