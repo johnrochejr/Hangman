@@ -18,7 +18,7 @@
         <input type="text" name="guess" placeholder="Make a guess">
         <button type="button">Enter</button>
       </form>
-      <p>Letters guessed: {{guess}} </p>
+      <p>Letters guessed: {{#history}}{{.}}{{/history}}</p>
     </div>
   </body>
 </html>

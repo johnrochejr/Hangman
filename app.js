@@ -33,19 +33,29 @@ app.post('/guess', (req, res) => {
   gameData.guess = req.body.guess;
   for (var i = 0; i < gameData.underScores.length; i++) {
     if (gameData.actualWord[i] === gameData.guess) {
-      gameData.underScores[i] = gameData.guess
+      gameData.underScores[i] = gameData.guess;
     }
-  }
-  console.log(gameData.guess);
+
+    // need to create a variable for wrong guesses
+  };
+
+  gameData.history.push(gameData.guess)
+
+  console.log(gameData);
+
+  // console.log(gameData.guess);
   res.render('home', gameData);
 });
 
 app.get('/', (req, res) => {
-  gameData = req.session
-  gameData.actualWord = wordForGame()
-  console.log(gameData.actualWord)
+  gameData = req.session;
+  gameData.history = [];
+  gameData.actualWord = wordForGame();
+  console.log(gameData.actualWord);
   gameData.underScores = gameData.actualWord.split("").map(letter => {
-    return letter = "_"
+    return letter = "_";
+
+  console.log(gameData.history);
   })
   res.render('home', gameData);
 });
