@@ -14,11 +14,11 @@
       <p>
         {{underScores}}
       </p>
-      <form action="" method="post">
+      <form action="/guess" method="post">
         <input type="text" name="guess" placeholder="Make a guess">
         <button type="button">Enter</button>
       </form>
-      <p>Letters guessed: </p>
+      <p>Letters guessed: {{guess}} </p>
     </div>
   </body>
 </html>
