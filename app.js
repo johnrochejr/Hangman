@@ -40,8 +40,10 @@ app.post('/guess', (req, res) => {
       gameData.underScores[i] = gameData.guess;
     }
   };
-  gameData.history.push(gameData.guess)
+  gameData.history.push(gameData.guess);
   gameData.remaining = 8 - gameData.history.filter((guess) => !gameData.actualWord.includes(guess)).length;
+
+
   res.render('home', gameData);
 });
 
