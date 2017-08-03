@@ -8,6 +8,8 @@ const session = require('express-session');
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.use (
   session ({
     secret: 'tame impala',
@@ -28,12 +30,16 @@ const wordForGame = () => {
   return words[randomWord];
 };
 
+let guessesLeft = 8;
+
 app.post('/guess', (req, res) => {
   gameData = req.session;
   gameData.guess = req.body.guess;
   for (var i = 0; i < gameData.underScores.length; i++) {
     if (gameData.actualWord[i] === gameData.guess) {
       gameData.underScores[i] = gameData.guess;
+    } else if (!gameData.actualWord[i]) {
+
     }
 
     // need to create a variable for wrong guesses

@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  background-color: #1E90FF;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 1.8;
+}
+
+.wrapper {
+  background-color: #F0F8FF;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 1em;
+  border-radius: .2em;
+  padding: 1em;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header p {
+  font-size: 1.2em;
+}
+
+.container {
+  text-align: center;
+  font-size: 1.1em;
+}
+
+input, button {
+  padding: 1em;
+}

@@ -6,19 +6,21 @@
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <section class="header">
-      <h3>Mystery Game</h3>
-      <p>You have blank guesses left</p>
-    </section>
-    <div class="container">
-      <p>
-        {{underScores}}
-      </p>
-      <form action="/guess" method="post">
-        <input type="text" name="guess" placeholder="Make a guess">
-        <button type="button">Enter</button>
-      </form>
-      <p>Letters guessed: {{#history}}{{.}}{{/history}}</p>
+    <div class="wrapper">
+      <section class="header">
+        <p>Mystery Game</p>
+        <p>You have blank guesses left</p>
+      </section>
+      <div class="container">
+        <p>
+          {{underScores}}
+        </p>
+        <form action="/guess" method="post">
+          <input type="text" name="guess" placeholder="Make a guess">
+          <button type="button">Enter</button>
+        </form>
+        <p>Letters guessed: {{#history}}{{.}}{{/history}}</p>
+      </div>
     </div>
   </body>
 </html>
