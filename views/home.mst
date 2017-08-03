@@ -9,7 +9,7 @@
     <div class="wrapper">
       <section class="header">
         <p>Mystery Game</p>
-        <p>You have blank guesses left</p>
+        <p>You have {{remaining}} guesses left</p>
       </section>
       <div class="container">
         <p>

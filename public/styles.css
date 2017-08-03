@@ -3,6 +3,7 @@ body {
   background-color: #1E90FF;
   font-family: "Josefin Sans", sans-serif;
   line-height: 1.8;
+  opacity: .9;
 }
 
 .wrapper {
@@ -32,4 +33,11 @@ body {
 
 input, button {
   padding: 1em;
+  border-radius: .2em;
+  border: none;
+}
+
+button {
+  background-color: #696969;
+  color: white;
 }

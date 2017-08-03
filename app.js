@@ -30,7 +30,7 @@ const wordForGame = () => {
   return words[randomWord];
 };
 
-let guessesLeft = 8;
+// Detrack amount of guesses from 8
 
 app.post('/guess', (req, res) => {
   gameData = req.session;
@@ -38,30 +38,21 @@ app.post('/guess', (req, res) => {
   for (var i = 0; i < gameData.underScores.length; i++) {
     if (gameData.actualWord[i] === gameData.guess) {
       gameData.underScores[i] = gameData.guess;
-    } else if (!gameData.actualWord[i]) {
-
     }
-
-    // need to create a variable for wrong guesses
   };
-
   gameData.history.push(gameData.guess)
-
-  console.log(gameData);
-
-  // console.log(gameData.guess);
+  gameData.remaining = 8 - gameData.history.filter((guess) => !gameData.actualWord.includes(guess)).length;
   res.render('home', gameData);
 });
 
 app.get('/', (req, res) => {
   gameData = req.session;
   gameData.history = [];
+  gameData.remaining = 8;
   gameData.actualWord = wordForGame();
-  console.log(gameData.actualWord);
+    console.log(gameData.actualWord);
   gameData.underScores = gameData.actualWord.split("").map(letter => {
     return letter = "_";
-
-  console.log(gameData.history);
   })
   res.render('home', gameData);
 });
@@ -69,26 +60,3 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('Port 3000 we are go for launch!');
 });
-
-
-// console.log(wordForGame);
-// console.log(Math.floor(Math.random() * words.length));
-// console.log(wordForGame);
-
-// make an array that creates _s for as many letters that
-// our random word is
-
-// test forLoop
-// console.log(underScores);
-// console.log(wordForGame);
-
-// let gameData =
-//
-// {
-//   wordforGame: wordForGame,
-//   underScores: underScores,
-//   guess: guess
-// };
-
-// How do I accept input (guess) as a variable from form,
-// and store 'guess' in session?
