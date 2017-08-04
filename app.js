@@ -30,23 +30,6 @@ const wordForGame = () => {
   return words[randomWord];
 };
 
-// Detrack amount of guesses from 8
-
-app.post('/guess', (req, res) => {
-  gameData = req.session;
-  gameData.guess = req.body.guess;
-  for (var i = 0; i < gameData.underScores.length; i++) {
-    if (gameData.actualWord[i] === gameData.guess) {
-      gameData.underScores[i] = gameData.guess;
-    }
-  };
-  gameData.history.push(gameData.guess);
-  gameData.remaining = 8 - gameData.history.filter((guess) => !gameData.actualWord.includes(guess)).length;
-
-
-  res.render('home', gameData);
-});
-
 app.get('/', (req, res) => {
   gameData = req.session;
   gameData.history = [];
@@ -58,6 +41,37 @@ app.get('/', (req, res) => {
   })
   res.render('home', gameData);
 });
+
+app.post('/guess', (req, res) => {
+  gameData = req.session;
+  gameData.guess = req.body.guess;
+  for (var i = 0; i < gameData.underScores.length; i++) {
+    if (gameData.actualWord[i] === gameData.guess) {
+      gameData.underScores[i] = gameData.guess;
+    }
+  };
+  gameData.history.push(gameData.guess);
+  gameData.remaining =
+  8 - gameData.history.filter((guess) =>
+  !gameData.actualWord.includes(guess)).length;
+
+  if (gameData.remaining === 0) {
+    res.render('lost', gameData)
+  } else {
+    // you win (mst)
+
+    res.render('home', gameData);
+  }
+});
+
+// new session when someone wants to play again
+// restart a new empty object
+
+app.get('/replay', (req, res) => {
+  // you get a new session
+  res.redirect('/')
+});
+
 
 app.listen(3000, () => {
   console.log('Port 3000 we are go for launch!');
