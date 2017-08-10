@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>You win!</title>
+  </head>
+  <body>
+    <p>You won the game!</p>
+    <p>You guessed the wor: {{actualWord}}</p>
+    <p>Would you like to play again?</p>
+    <form class="" action="index.html" method="post">
+    <form action="/replay" method="get">
+      <button type="submit">Yes</button>
+    </form>
+  </body>
+</html>

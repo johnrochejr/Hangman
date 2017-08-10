@@ -56,20 +56,19 @@ app.post('/guess', (req, res) => {
   !gameData.actualWord.includes(guess)).length;
 
   if (gameData.remaining === 0) {
-    res.render('lost', gameData)
+    res.render('lost', gameData);
   } else {
-    // you win (mst)
-
     res.render('home', gameData);
   }
+
+  // if (gameData.actualWord.length === gameData.underScores.length) {
 });
 
-// new session when someone wants to play again
-// restart a new empty object
+
 
 app.get('/replay', (req, res) => {
   // you get a new session
-  res.redirect('/')
+  res.redirect('/', )
 });
 
 
